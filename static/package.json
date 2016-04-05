@@ -42,7 +42,6 @@
   },
   "dependencies": {
     "es6-promisify": "^4.0.0",
-    "fb": "^1.0.2",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-redux": "^4.4.1",

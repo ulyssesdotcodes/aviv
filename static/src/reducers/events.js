@@ -12,7 +12,7 @@ function events(state = {
     return Object.assign({}, state, {
       didInvalidate: true
     });
-  case REQUEST_POSTS:
+  case REQUEST_EVENTS:
     return Object.assign({}, state, {
       isFetching: true,
       didInvalidate: false

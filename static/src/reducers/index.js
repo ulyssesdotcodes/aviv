@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import events from './events'
 
-const todoApp = combineReducers({
+const venueEventsApp = combineReducers({
   events
 })
 

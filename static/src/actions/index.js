@@ -1,7 +1,4 @@
 import promisify from 'es6-promisify';
-const FB = require('fb');
-
-const api = promisify(FB.api);
 
 export const INVALIDATE_EVENTS = 'INVALIDATE_EVENTS';
 
@@ -35,6 +32,8 @@ export function fetchEvents(venue) {
   return function(dispatch){
     dispatch(requestEvents(venue));
 
+    const api = promisify(FB.api);
+
     return api('/278407115702132/events', {}, 'GET')
       .then((response) => response.json())
       .then((events) => console.log("Got events ", events))
@@ -44,7 +43,8 @@ export function fetchEvents(venue) {
 }
 
 function shouldFetchEvents(state, venue) {
-  const events = state.events;
+  const events = state.items;
+  console.log("events", events)
   if(!events){
     return true;
   } else if (events.isFetching) {
