@@ -1,7 +1,7 @@
 dist*
 static/tmp/
 static/combined/
-config/client_session_key.aes
+client_session_key.aes
 *.hi
 *.o
 *.sqlite3
@@ -17,7 +17,10 @@ cabal.sandbox.config
 *.swp
 *.keter
 
-static/node_modules
-static/npm-debug.log
-static/.DS_Store
-static/dist
+webapp/node_modules
+webapp/npm-debug.log
+webapp/.DS_Store
+webapp/dist
+config/keys.yml
+
+
