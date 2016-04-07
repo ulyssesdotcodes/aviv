@@ -11,6 +11,6 @@ staticFiles "static"
 
 data App = App { getStatic :: Static }
 
-mkYesod "App" $(parseRoutesFile "routes")
+mkYesodData "App" $(parseRoutesFile "routes")
 
 instance Yesod App

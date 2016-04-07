@@ -1,5 +1,5 @@
  {-# LANGUAGE QuasiQuotes, TemplateHaskell, OverloadedStrings, TypeFamilies, MultiParamTypeClasses #-}
--- import Application () -- for YesodDispatch instance
+import Application () -- for YesodDispatch instance
 import Foundation
 import Yesod.Core
 import Yesod.Static

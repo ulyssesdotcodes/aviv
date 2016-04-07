@@ -6,16 +6,23 @@ extra-source-files: routes
 
 executable          aviv
   main-is:          Main.hs
+  hs-source-dirs:   ., config
   other-modules:    Application
                     Foundation
+                    Config
 
                     Add
+                    Facebook
                     Home
 
   ghc-options:      -Wall -fwarn-tabs -O2
 
-  build-depends:  base
+  build-depends:  aeson
+                , base
+                , bytestring
+                , text
                 , wai-app-static
+                , yaml
                 , yesod-core
                 , yesod-static
 

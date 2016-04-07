@@ -8,5 +8,6 @@ import Yesod.Core
 
 -- import Add
 -- import Home
+import Facebook
 
 mkYesodDispatch "App" resourcesApp

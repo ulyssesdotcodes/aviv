@@ -1,18 +1,20 @@
- {-# LANGUAGE OverloadedStrings #-}
- {-# LANGUAGE QuasiQuotes       #-}
- module Facebook where
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE QuasiQuotes       #-}
 
- import Foundation
- import Yesod.Core
+module Facebook where
 
- getAppTokenR :: 
+import Foundation
+import Yesod.Core
+import Config
+import Data.Aeson
+import Data.Text
 
- getHomeR :: Handler Html
- getHomeR = defaultLayout $ do
-     setTitle "Minimal Multifile"
-     [whamlet|
-         <p>
-             <a href=@{AddR 5 7}>HTML addition
-         <p>
-             <a href=@{AddR 5 7}?_accept=application/json>JSON addition
-     |]
+getFbAccessTokenR :: Handler Value
+getFbAccessTokenR = do
+  appSecret <- liftIO fbAppSecret
+  return $ appSecretToJson appSecret
+
+appSecretToJson :: Maybe String ->  Value
+appSecretToJson ( Just secret ) = object ["data" .= secret]
+appSecretToJson _ = object ["data" .= ("wump wump" :: Text)]
+

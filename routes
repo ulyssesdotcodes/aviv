@@ -1,1 +1,2 @@
-/ StaticR Static getStatic
+/fbaccesstoken FbAccessTokenR GET
+!/ StaticR Static getStatic
