@@ -3,9 +3,9 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import AvivApp from './AvivApp.js';
-import todoApp from '../reducers';
+import venueEventsApp from '../reducers';
 
-const store = createStore(todoApp);
+const store = createStore(venueEventsApp);
 
 export default class App extends Component {
   render() {

@@ -50,7 +50,7 @@ data EventsRequest =
 
 data EventsResponse =
   EventsResponse { events :: [Event]
-                 , next :: String
+                 , next :: Maybe String
                  } deriving (Show, Generic)
 instance FromJSON EventsResponse
 instance ToJSON EventsResponse
@@ -127,15 +127,14 @@ venueEvents venue (Just eventReq) (Just atStr) = do
     req json = EventsResponse (sortEvents (past eventReq) $ eventsVec json) (nextURL json)
     url now = generateFbRequest venue atStr now eventReq
     eventsVec eventsJson = resultsFromVector (eventsJson ^? key "data" . _Array)
-    nextURL json = queryParams
-       ([("past", boolToString $ past eventReq)] ++
-       afterParam (json ^? key "paging" . key "cursors" . key "after" . _String))
+    nextURL json = urlParams (boolToString $ past eventReq) (json ^? key "paging" . key "cursors" . key "after" . _String) (json ^? key "paging" . key "next")
     sortEvents False = sortBy $ comparing start_time
     sortEvents True = reverse . sortEvents False
-    afterParam (Just a) = [("cursor", T.unpack a)]
-    afterParam Nothing = []
-venueEvents _ Nothing _ = return $ EventsResponse [] ""
-venueEvents _ _ Nothing = return $ EventsResponse [] ""
+    urlParams past (Just a) (Just _) = Just $ queryParams [("past", past), ("cursor", T.unpack a)]
+    urlParams _ Nothing _ = Nothing
+    urlParams _ _ Nothing = Nothing
+venueEvents _ Nothing _ = return $ EventsResponse [] Nothing
+venueEvents _ _ Nothing = return $ EventsResponse [] Nothing
 
 resultsFromVector :: Maybe (V.Vector Value) -> [Event]
 resultsFromVector (Just vec) = (concat . V.toList) $ V.map (eventFromResult . fromJSON) vec
