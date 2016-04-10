@@ -20,7 +20,13 @@ executable          aviv
   build-depends:  aeson
                 , base
                 , bytestring
+                , http-conduit
+                , lens
+                , lens-aeson
+                , stringsearch
+                , time
                 , text
+                , vector
                 , wai-app-static
                 , yaml
                 , yesod-core

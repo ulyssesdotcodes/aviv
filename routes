@@ -1,2 +1,2 @@
-/fbaccesstoken FbAccessTokenR GET
+/events FbEventsR GET
 !/ StaticR Static getStatic
