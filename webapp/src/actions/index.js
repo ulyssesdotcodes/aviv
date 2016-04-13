@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch';
 
 export const INVALIDATE_EVENTS = 'INVALIDATE_EVENTS';
 
+var server = "http://venues.upopple.com/"
+
 export function invalidateEvents(time) {
   return {
     type: INVALIDATE_EVENTS,
@@ -52,7 +54,7 @@ export function fetchEvents(time) {
 
     const timeFlag = time == 'past' ? true : false;
 
-    return fetch(`http://localhost:3000/events?past=${timeFlag}`, {}, 'GET')
+    return fetch(`${server}/events?past=${timeFlag}`, {}, 'GET')
       .then((response) => response.json())
       .then((json => dispatch(receiveEvents(time, json))))
       .catch((err) => console.log("ALERT ALERT", err));
@@ -87,7 +89,7 @@ export function loadMore(time) {
 
     dispatch(requestMoreEvents(time))
 
-    return fetch(`http://localhost:3000/events?${events.next}`, {}, 'GET')
+    return fetch(`${server}/events?${events.next}`, {}, 'GET')
       .then((response) => response.json())
       .then((json => dispatch(receiveMoreEvents(time, json))))
       .catch((err) => console.log("ALERT ALERT", err));

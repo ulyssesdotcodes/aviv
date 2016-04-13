@@ -10,4 +10,4 @@ import Network.Wai.Middleware.Cors
 main :: IO ()
 main = do
   app <- toWaiApp App
-  run 3000 $ simpleCors app
+  run 3010 $ simpleCors app
