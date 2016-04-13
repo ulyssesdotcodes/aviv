@@ -1,0 +1,22 @@
+.event-date {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  width: 100px;
+
+  .date {
+    margin-bottom: 16px;
+
+    .day-of-week {
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  .time {
+    text-align: center;
+    font-size: 0.9em;
+  }
+}

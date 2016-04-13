@@ -27,7 +27,10 @@ executable          aviv
                 , time
                 , text
                 , vector
+                , wai
                 , wai-app-static
+                , wai-cors
+                , warp
                 , yaml
                 , yesod-core
                 , yesod-static

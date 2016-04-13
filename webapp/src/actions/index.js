@@ -2,86 +2,94 @@ import fetch from 'isomorphic-fetch';
 
 export const INVALIDATE_EVENTS = 'INVALIDATE_EVENTS';
 
-export function invalidateEvents(venue) {
+export function invalidateEvents(time) {
   return {
     type: INVALIDATE_EVENTS,
-    venue
+    time
   };
 }
 
 export const REQUEST_EVENTS = 'REQUEST_EVENTS';
-export function requestEvents(venue) {
+export function requestEvents(time) {
   return {
     type: REQUEST_EVENTS,
-    venue
+    time
   };
 }
 
 export const REQUEST_MORE_EVENTS = 'REQUEST_MORE_EVENTS';
-export function requestMoreEvents() {
+export function requestMoreEvents(time) {
   return {
-    type: REQUEST_MORE_EVENTS
+    type: REQUEST_MORE_EVENTS,
+    time
   };
 }
 
 
 export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
-export function receiveEvents(venue, json) {
+export function receiveEvents(time, json) {
   return {
     type: RECEIVE_EVENTS,
-    venue,
+    time,
     events: json.events,
     next: json.next
   };
 }
 
 export const RECEIVE_MORE_EVENTS = 'RECEIVE_MORE_EVENTS';
-export function receiveMoreEvents(json) {
+export function receiveMoreEvents(time, json) {
   return {
     type: RECEIVE_MORE_EVENTS,
     events: json.events,
-    next: json.next
+    next: json.next,
+    time
   };
 }
 
-export function fetchEvents(venue) {
+export function fetchEvents(time) {
   return function(dispatch){
-    dispatch(requestEvents(venue));
+    dispatch(requestEvents(time));
 
-    return fetch('http://localhost:3000/events?past=true', {}, 'GET')
+    const timeFlag = time == 'past' ? true : false;
+
+    return fetch(`http://localhost:3000/events?past=${timeFlag}`, {}, 'GET')
       .then((response) => response.json())
-      .then((json => dispatch(receiveEvents(venue, json))))
+      .then((json => dispatch(receiveEvents(time, json))))
       .catch((err) => console.log("ALERT ALERT", err));
   }
 }
 
-function shouldFetchEvents(state, venue) {
-  const events = state.items;
+function shouldFetchEvents(state, time) {
+  const events = state.events[time];
   if(!events){
     return true;
-  } else if (state.isFetching) {
+  } else if (events.isFetching) {
     return false;
   } else {
-    return state.didInvalidate;
+    return events.didInvalidate;
   }
 }
 
-export function fetchEventsIfNeeded(venue) {
+export function fetchEventsIfNeeded(time) {
   return (dispatch, getState) => {
-    if(shouldFetchEvents(getState(), venue)) {
-      return dispatch(fetchEvents(venue));
+    if(shouldFetchEvents(getState(), time)) {
+      return dispatch(fetchEvents(time));
     }
   }
 }
 
-export function loadMore() {
+export function loadMore(time) {
   return (dispatch, getState) => {
-    dispatch(requestMoreEvents())
+    const events = getState().events[time];
+    if(!events || !events.next || events.isFetchingMore) {
+      return;
+    }
 
-    const events = getState().events;
+    dispatch(requestMoreEvents(time))
+
     return fetch(`http://localhost:3000/events?${events.next}`, {}, 'GET')
       .then((response) => response.json())
-      .then((json => dispatch(receiveMoreEvents(json))))
+      .then((json => dispatch(receiveMoreEvents(time, json))))
       .catch((err) => console.log("ALERT ALERT", err));
   }
 }

@@ -37,6 +37,7 @@ data Event =
         , description :: T.Text
         , cover :: Cover
         , name :: T.Text
+        , ticket_uri :: Maybe T.Text
         , start_time :: UTCTime
         } deriving (Show, Generic)
 

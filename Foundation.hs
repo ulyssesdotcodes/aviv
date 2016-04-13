@@ -9,7 +9,7 @@ import Yesod.Static
 
 staticFiles "static"
 
-data App = App { getStatic :: Static }
+data App = App
 
 mkYesodData "App" $(parseRoutesFile "routes")
 
