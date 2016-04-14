@@ -1,2 +1,8 @@
 @import 'events';
-@import 'header'
+@import 'header';
+
+.content {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto 0 auto;
+}

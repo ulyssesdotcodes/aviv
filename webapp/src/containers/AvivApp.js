@@ -15,7 +15,9 @@ class AvivApp extends Component {
     return (
       <div>
         <Header title="AVIV" />
-        {this.props.children}
+        <div className="content">
+          {this.props.children}
+        </div>
       </div>
     );
   }

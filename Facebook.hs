@@ -36,6 +36,7 @@ data Event =
   Event { attending_count :: Int
         , description :: T.Text
         , cover :: Cover
+        , id :: T.Text
         , name :: T.Text
         , ticket_uri :: Maybe T.Text
         , start_time :: UTCTime

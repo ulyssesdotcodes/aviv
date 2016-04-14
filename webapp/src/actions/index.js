@@ -48,6 +48,15 @@ export function receiveMoreEvents(time, json) {
   };
 }
 
+export const SELECT_EVENT = 'SELECT_EVENT';
+export function selectEvent(time, id) {
+  return {
+    type: SELECT_EVENT,
+    time,
+    id
+  };
+}
+
 export function fetchEvents(time) {
   return function(dispatch){
     dispatch(requestEvents(time));

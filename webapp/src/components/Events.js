@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchEventsIfNeeded, invalidateEvents, loadMore } from '../actions'
+import { fetchEventsIfNeeded, invalidateEvents, loadMore, selectEvent } from '../actions'
+import EventDetail from './EventDetail'
 import EventSummary from './EventSummary'
+import _ from 'lodash'
 
 const Events = class extends Component {
   constructor(props) {
@@ -15,7 +17,6 @@ const Events = class extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchEventsIfNeeded(this.props.time))
-    window.onscroll = this.onScroll
   }
 
   componentWillUnmount() {
@@ -30,11 +31,24 @@ const Events = class extends Component {
     if(document.getElementsByTagName('body')[0].clientHeight - window.scrollY < 1000) {
       this.loadMore();
     }
-    this.setState({scroll: window.scrollY});
   }
 
   render() {
-    var els = this.props.items ? this.props.items.map((event, i) => <EventSummary {...event} key={i} />) : []
+    let selectEventP = _.partial(_.flowRight(this.props.dispatch, selectEvent), this.props.time);
+    var els = this.props.items ? this.props.items.map((event, i) => {
+      let select = _.partial(selectEventP, event.id);
+      let eventProps = _.extend(event, { time: this.props.time });
+      if(event.id == this.props.selected) {
+        return (
+          <div ref={(ref) => { if(ref && i !=0) this.props.scrollTo(ref.offsetTop); }} key={i} >
+            <EventDetail {...eventProps} />
+          </div>
+        )
+      }
+      else {
+        return <EventSummary {...eventProps} key={i} onClick={select} />
+      }
+    }) : [];
 
     return (
       <div className="events" onScroll={this.onScroll}>

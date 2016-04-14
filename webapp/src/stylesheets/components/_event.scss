@@ -2,6 +2,7 @@
 
 .event-summary {
   display: flex;
+  flex-direction: row;
   margin-bottom: 32px;
 
   .title {
@@ -36,5 +37,20 @@
     a:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.event-detail {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  .event-summary {
+    margin-bottom: 8px;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto 32px auto;
   }
 }
