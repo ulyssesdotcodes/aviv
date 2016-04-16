@@ -24,7 +24,7 @@ const Events = class extends Component {
   }
 
   loadMore() {
-    this.props.dispatch(loadMore(this.props.time))
+    this.props.dispatch(loadMore(this.props.time));
   }
 
   onScroll() {
@@ -36,11 +36,18 @@ const Events = class extends Component {
   render() {
     let selectEventP = _.partial(_.flowRight(this.props.dispatch, selectEvent), this.props.time);
     var els = this.props.items ? this.props.items.map((event, i) => {
-      let select = _.partial(selectEventP, event.id);
+      let select = (e) => {
+        // Figure out the current detail height minus the title (which will stay) if that detail is above this one.
+        let offset = this._detail.offsetTop < e.target.offsetTop ? this._detail.clientHeight - this._detail.querySelector(".event-summary").clientHeight : 0;
+        offset += 32; // Scroll padding
+
+        this.props.scrollTo(e.target.offsetTop - offset);
+        selectEventP(event.id);
+      }
       let eventProps = _.extend(event, { time: this.props.time });
       if(event.id == this.props.selected) {
         return (
-          <div ref={(ref) => { if(ref && i !=0) this.props.scrollTo(ref.offsetTop); }} key={i} >
+          <div key={i} ref={ (d) => this._detail=d }>
             <EventDetail {...eventProps} />
           </div>
         )

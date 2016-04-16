@@ -46,6 +46,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "autolinker": "^0.26.0",
     "classnames": "^2.2.3",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.9.0",
@@ -53,6 +54,7 @@
     "node-sass": "^3.4.2",
     "normalize.css": "^4.0.0",
     "react": "^0.14.6",
+    "react-autolink": "^0.2.1",
     "react-dom": "^0.14.6",
     "react-infinite": "^0.9.1",
     "react-redux": "^4.4.1",
