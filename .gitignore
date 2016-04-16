@@ -21,6 +21,7 @@ webapp/node_modules
 webapp/npm-debug.log
 webapp/.DS_Store
 webapp/dist
+webapp/bundle.js
 config/keys.yml
 
 
