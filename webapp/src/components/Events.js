@@ -1,9 +1,11 @@
+import { fetchEventsIfNeeded, invalidateEvents, loadMore, selectEvent } from '../actions'
+import _ from 'lodash'
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchEventsIfNeeded, invalidateEvents, loadMore, selectEvent } from '../actions'
+import Scroll from 'react-scroll'
+
 import EventDetail from './EventDetail'
 import EventSummary from './EventSummary'
-import _ from 'lodash'
 
 const Events = class extends Component {
   constructor(props) {
@@ -39,17 +41,20 @@ const Events = class extends Component {
       let select = (e) => {
         // Figure out the current detail height minus the title (which will stay) if that detail is above this one.
         let offset = this._detail.offsetTop < e.target.offsetTop ? this._detail.clientHeight - this._detail.querySelector(".event-summary").clientHeight : 0;
-        offset += 32; // Scroll padding
 
-        this.props.scrollTo(e.target.offsetTop - offset);
+        window.scroll(0, window.scrollY - offset);
+
+        offset += 32; // Scroll padding
+        Scroll.animateScroll.scrollTo(e.target.offsetTop - offset);
         selectEventP(event.id);
       }
       let eventProps = _.extend(event, { time: this.props.time });
       if(event.id == this.props.selected) {
+        let height = this._detail ? this._detail.querySelector(".event-summary").clientHeight : 0;
         return (
-          <div key={i} ref={ (d) => this._detail=d }>
-            <EventDetail {...eventProps} />
-          </div>
+            <div ref={(d) => this._detail=d } key={i}>
+              <EventDetail {...eventProps} />
+            </div>
         )
       }
       else {
