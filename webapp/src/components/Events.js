@@ -45,7 +45,7 @@ const Events = class extends Component {
         window.scroll(0, window.scrollY - offset);
 
         offset += 32; // Scroll padding
-        Scroll.animateScroll.scrollTo(e.target.offsetTop - offset);
+        Scroll.animateScroll.scrollTo(e.target.offsetTop - offset, { duration: 250 });
         selectEventP(event.id);
       }
       let eventProps = _.extend(event, { time: this.props.time });
