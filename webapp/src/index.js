@@ -1,5 +1,6 @@
 import { fetchEventsIfNeeded } from './actions'
 import AvivApp from './containers/AvivApp'
+import About from './components/About'
 import Past from './components/Past'
 import Upcoming from './components/Upcoming'
 import React from 'react'
@@ -30,6 +31,7 @@ render(
       <Route path="/" component={AvivApp}>
         <IndexRoute component={Upcoming} />
         <Route path="/past" component={Past} />
+        <Route path="/about" component={About} />
       </Route>
     </Router>
   </Provider>,

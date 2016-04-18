@@ -14,6 +14,7 @@ const Header = (props) => {
       <ul className="links">
         <li><IndexLink to="/" activeClassName="selected">Upcoming</IndexLink></li>
         <li><Link to="/past" activeClassName="selected">Past</Link></li>
+        <li><Link to="/about" activeClassName="selected">About</Link></li>
       </ul>
     </div>
   )
