@@ -1,2 +1,2 @@
-+/webapp/src
-+*.hs
+-node_modules
+-dist

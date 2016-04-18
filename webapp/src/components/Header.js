@@ -10,6 +10,7 @@ const Header = (props) => {
   return (
     <div className="header">
       <h1 className="title">{props.title}</h1>
+      <h3 className="motto">All ages, all the time.</h3>
       <ul className="links">
         <li><IndexLink to="/" activeClassName="selected">Upcoming</IndexLink></li>
         <li><Link to="/past" activeClassName="selected">Past</Link></li>
