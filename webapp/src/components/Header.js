@@ -10,7 +10,9 @@ const Header = (props) => {
   return (
     <div className="header">
       <h1 className="title">{props.title}</h1>
-      <h3 className="motto">All ages, all the time.</h3>
+      <div className="info">
+        <span className="motto">All ages, all the time.</span> <a href="https://www.google.com/maps/place/AVIV/@40.7211274,-73.9404534,17z/data=!3m1!4b1!4m2!3m1!1s0x89c2594d04dc49ab:0xb6e99401cab84820" target="_blank">496 Morgan Ave, BK</a>
+      </div>
       <ul className="links">
         <li><IndexLink to="/" activeClassName="selected">Upcoming</IndexLink></li>
         <li><Link to="/past" activeClassName="selected">Past</Link></li>

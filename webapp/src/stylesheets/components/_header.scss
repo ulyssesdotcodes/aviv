@@ -12,11 +12,21 @@
     margin-bottom: 8px;
   }
 
-  .motto {
+  .info {
     margin: 8px auto 64px auto;
-    color: #a19f9f;
-    font-weight: normal;
+
+    .motto {
+      color: #a19f9f;
+      font-weight: normal;
+    }
+
+    a {
+      color: black;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
   }
+
 
   ul.links {
     display: flex;
