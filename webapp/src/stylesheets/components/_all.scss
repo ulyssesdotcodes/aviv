@@ -2,8 +2,11 @@
 @import 'events';
 @import 'header';
 
+#root {
+  font-family: Arial, 'helvetica Neue', Helvetica, sans-serif;
+}
+
 .content {
-  max-width: 800px;
-  width: 90%;
+  width: 950px;
   margin: 0 auto 0 auto;
 }

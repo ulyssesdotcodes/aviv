@@ -4,17 +4,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const EventDate = (props) => {
-  let eventDateClass = classnames();
+  let eventDateClass = classnames('event-date', { 'oneline': props.oneline });
   let date = moment(props.time);
 
   return (
-      <div className="event-date">
-        <div className="date">
-          <span className="day-of-week">{date.format('ddd')}</span> <span className="date">{date.format('Do')}</span>
-        </div>
-        <div className="time">
-          {date.format('ha')}
-        </div>
+      <div className={eventDateClass}>
+        <span className="day-of-week">{date.format('dddd')}</span>
+        <span className="date">{date.format('MMM D')}</span>
+        <span className="time">{date.format('h:mm A')}</span>
       </div>
     )
   }

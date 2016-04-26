@@ -10,13 +10,11 @@ const Event = (props) => {
 
   return (
       <div className="event-summary" onClick={props.onClick}>
-        <EventDate time={props.start_time} />
-        <div className="title">
-          <h1 className="name"> {props.name} </h1>
-          <h5 className="attending"><span className="attending-count">{props.attending_count}</span> {attendingText}</h5>
+        <div className="date" >
+          <EventDate time={props.start_time} oneline={true} />
         </div>
-        <div className="tickets">
-          {ticketEl}
+        <div className="name">
+          <span> {props.name} </span>
         </div>
       </div>
     )

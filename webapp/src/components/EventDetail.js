@@ -21,12 +21,22 @@ const EventDetail = (props) => {
   return (
       <div className="event-detail">
         <EventSummary {...props} />
-        <div>
-          <img src={props.cover.source} />
-          <div>
-            {description}
+        <div className="details">
+          <div className="info">
+            <hr />
+            <div className="tickets">
+              <EventDate oneline={false} />
+              <div className="purchase">
+                TIX
+              </div>
+            </div>
+            <hr />
+            <div className="description">
+              {description}
+              <a className="facebook" href={facebookLink} target="_blank">See fb event</a>
+            </div>
           </div>
-          <a href={facebookLink} target="_blank">View on Facebook</a>
+          <img className="poster" src={props.cover.source} />
         </div>
       </div>
     )
