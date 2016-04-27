@@ -45,8 +45,12 @@
     flex-direction: row;
 
     .info {
-      width: 300px;
-      margin-top: -7px;
+      width: 32%;
+      max-width: 300px;
+
+      hr {
+        margin-top: 0px;
+      }
 
       > div {
         padding: 16px;
@@ -91,7 +95,8 @@
 
     .poster {
       display: block;
-      width: 650px;
+      max-width: 650px;
+      width: 69%;
     }
   }
 }

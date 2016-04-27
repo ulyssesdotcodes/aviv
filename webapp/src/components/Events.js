@@ -40,7 +40,11 @@ const Events = class extends Component {
     var els = this.props.items ? this.props.items.map((event, i) => {
       let select = (e) => {
         // Figure out the current detail height minus the title (which will stay) if that detail is above this one.
-        let offset = this._detail.offsetTop < e.target.offsetTop ? this._detail.clientHeight - this._detail.querySelector(".event-summary").clientHeight : 0;
+        let offset =  0;
+
+        if (this._detail) {
+          offset = this._detail.offsetTop < e.target.offsetTop ? this._detail.clientHeight - this._detail.querySelector(".event-summary").clientHeight : 0;
+        }
 
         window.scroll(0, window.scrollY - offset);
 
