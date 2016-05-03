@@ -2,34 +2,32 @@
 
 .event-summary {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 32px;
+  flex-direction: row;
+  margin-bottom: 16px;
   background-color: black;
   padding: 16px;
   color: white;
   text-transform: uppercase;
   overflow: hidden;
 
-  .date {
+  .summary-date {
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: block;
     font-size: 0.8em;
     text-align: left;
+    padding: 8px;
+    width: 150px;
   }
 
   .name {
-    align-self: center;
+    padding-top: 8px;
+    align-self: start;
     font-size: 1.2em;
-    width: 600px;
     cursor: pointer;
-    text-align: center;
+    text-align: left;
     overflow: hidden;
-
-    span {
-      display: block;
-      white-space: nowrap;
-      width: 600px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
+    font-family: $knewave;
   }
 }
 
@@ -45,51 +43,56 @@
     flex-direction: row;
 
     .info {
+      display: flex;
+      flex-direction: column;
       width: 32%;
       max-width: 300px;
 
-      hr {
-        margin-top: 0px;
-      }
-
-      > div {
-        padding: 16px;
-      }
-
-      .tickets {
-        font-size: 1em;
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-
-        .event-date {
-          flex-grow: 1;
-        }
-
-        .purchase {
-          flex-grow: 0;
-          align-self: center;
-          padding: 16px 32px 16px 32px;
-          background-color: #555555;
-          border-radius: 2px;
-        }
-
+      .purchase {
+        font-size: 1.3em;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        background-color: black;
+        font-family: $sirin;
+        padding: 8px 16px 8px 16px;
+        border-bottom: 3px solid #fff;
+        border-right: 3px solid #fff;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        margin: 0 16px 0 16px;
       }
 
       .description {
+        flex-grow: 1;
+        padding: 16px;
         font-size: 0.8em;
 
-        .facebook {
-          display: block;
-          align-self: center;
+        a {
           color: white;
-          text-align: center;
+          font-style: italic;
           text-transform: uppercase;
           text-decoration: none;
-          background-color: #555555;
-          padding: 8px; 
-          border-radius: 2px;
         }
+
+        p {
+          display: block;
+          margin-top: 16px;
+        }
+
+      }
+
+      .facebook {
+        flex-grow: 0;
+        display: block;
+        align-self: end;
+        color: white;
+        text-align: right;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px; 
+        margin-bottom: 16px;
+        font-style: italic;
       }
     }
 

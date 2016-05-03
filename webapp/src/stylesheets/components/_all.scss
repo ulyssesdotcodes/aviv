@@ -1,9 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Sirin+Stencil|Knewave|Cousine:400,400italic);
+
+$sirin: 'Sirin Stencil', cursive;
+$knewave: 'Knewave', cursive;
+$cousine: 'Cousine', sans-serif;
+
 @import 'about';
 @import 'events';
 @import 'header';
 
+
 #root {
-  font-family: Arial, 'helvetica Neue', Helvetica, sans-serif;
+  font-family: $cousine;
 }
 
 .content {

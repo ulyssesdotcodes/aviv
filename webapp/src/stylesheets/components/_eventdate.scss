@@ -4,16 +4,6 @@
   margin-bottom: 8px;
   text-transform: uppercase;
   color: white;
-}
-
-.event-date.oneline {
-  flex-direction: row;
-
-  .time {
-    display: none;
-  }
-
-  .date:before {
-    content: "\00a0\00a0";
-  }
+  font-style: italic;
+  letter-spacing: 0.15em;
 }
