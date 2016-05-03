@@ -25,7 +25,7 @@ const EventDetail = (props) => {
           <div className="info">
             <hr />
             <div className="tickets">
-              <EventDate oneline={false} />
+              <EventDate oneline={false} time={props.start_time}/>
               <div className="purchase">
                 TIX
               </div>
