@@ -7,7 +7,7 @@ ul.slash-list {
     display: inline;
     text-transform: uppercase;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 0.8em;
     color: black;
 
     a {
@@ -15,12 +15,9 @@ ul.slash-list {
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    a.selected {
-      text-decoration: underline;
+    a.selected, a:hover {
+      padding-bottom: 2px;
+      border-bottom: 1px solid #000;
     }
   }
 

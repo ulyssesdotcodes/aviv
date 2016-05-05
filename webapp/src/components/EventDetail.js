@@ -8,7 +8,7 @@ import EventDate from './EventDate'
 import EventSummary from './EventSummary'
 
 const EventDetail = (props) => {
-  let ticketEl = props.ticket_uri ? <a href={props.ticket_uri} target="_blank">TIX >></a> : <span></span>
+  let ticketEl = props.ticket_uri ? <div className="purchase"><a href={props.ticket_uri} target="_blank">Tickets Available</a></div> : <span></span>
 
   let description =
     _(props.description.split('\n'))
@@ -23,15 +23,15 @@ const EventDetail = (props) => {
         <EventSummary {...props} />
         <div className="details">
           <div className="info">
-            <div className="purchase">
-              Tickets Available
-            </div>
+            { ticketEl }
             <div className="description">
               {description}
             </div>
             <a className="facebook" href={facebookLink} target="_blank">See Facebook event &gt; </a>
           </div>
-          <img className="poster" src={props.cover.source} />
+          <div className="poster" >
+            <img src={props.cover.source} />
+          </div>
         </div>
       </div>
     )

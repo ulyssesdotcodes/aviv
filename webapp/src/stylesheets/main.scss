@@ -1,2 +1,9 @@
 @import 'components/all';
 @import 'utils/all';
+
+a {
+  color: black;
+  text-decoration: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
