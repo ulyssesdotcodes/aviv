@@ -19,6 +19,7 @@ const Events = class extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchEventsIfNeeded(this.props.time))
+      window.onscroll = this.onScroll;
   }
 
   componentWillUnmount() {
