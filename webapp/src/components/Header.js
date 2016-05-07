@@ -7,12 +7,15 @@ import EventSummary from './EventSummary'
 
 const Header = (props) => {
 
+  const emailLink = "mailto:" + props.email;
+
   return (
     <div className="header">
       <Link to="/" className="title">{props.title}</Link>
       <div className="meta">
         <ul className="slash-list">
           <li className="address"><a href="https://www.google.com/maps/place/AVIV/@40.7211274,-73.9404534,17z/data=!3m1!4b1!4m2!3m1!1s0x89c2594d04dc49ab:0xb6e99401cab84820" target="_blank">{props.address}</a></li>
+          <li className="email"><a href={ emailLink }> { props.email }</a></li>
           <li className="motto">{props.motto}</li>
         </ul>
         <ul className="slash-list">
