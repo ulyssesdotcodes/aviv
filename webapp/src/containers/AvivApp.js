@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import React, { Component, PropTypes } from 'react'
 import _ from 'lodash/fp'
 
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 class AvivApp extends Component {
@@ -18,6 +19,7 @@ class AvivApp extends Component {
         <div className="content">
           {this.props.children}
         </div>
+        <Footer />
       </div>
     );
   }
