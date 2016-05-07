@@ -1,40 +1,60 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { Component } from 'react'
 import ReactAutolink from 'react-autolink'
 import ReactDOM from 'react-dom'
 import _ from 'lodash'
 
 import EventDate from './EventDate'
+import EventDescription from './EventDescription'
 import EventSummary from './EventSummary'
 
-const EventDetail = (props) => {
-  let ticketEl = props.ticket_uri ? <div className="purchase"><a href={props.ticket_uri} target="_blank">Tickets Available</a></div> : <span></span>
+const EventDetail = class extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      maxDescriptionHeight: -1,
+      height: -1
+    }
+  }
 
-  let description =
-    _(props.description.split('\n'))
-      .map((p, i) => ReactAutolink.autolink(p, {target: '_blank', key: i}))
-      .map((p, i) => <p key={i}>{p}</p>)
-      .value();
+  shrinkDescription(e) {
+    const height = ReactDOM.findDOMNode(this.refs.description).clientHeight;
+    this.setState({ maxDescriptionHeight: e.target.clientHeight, height });
+  }
 
-  let facebookLink = `https://facebook.com/${props.id}`;
+  expandDescription() {
+    this.setState({ maxDescriptionHeight: this.state.height })
+  }
 
-  return (
-      <div className="event-detail">
-        <EventSummary {...props} />
-        <div className="details">
-          <div className="info">
-            { ticketEl }
-            <div className="description">
-              {description}
+  render() {
+    const description =
+      _(this.props.description.split('\n'))
+        .map((p, i) => ReactAutolink.autolink(p, {target: '_blank', key: i}))
+        .map((p, i) => <p key={i}>{p}</p>)
+        .value();
+
+    const descriptionProps = _.extend({}, this.props, {
+      height: this.state.height,
+      maxHeight: this.state.maxDescriptionHeight,
+      expandDescription: this.expandDescription.bind(this)
+    });
+
+    return (
+        <div className="event-detail">
+          <EventSummary { ...this.props }/>
+          <div className="details">
+            <EventDescription { ...descriptionProps } >
+              <div className="description" ref="description">
+                { description }
+              </div>
+            </EventDescription>
+            <div className="poster" >
+              <img onLoad={ this.shrinkDescription.bind(this) } src={this.props.cover.source} />
             </div>
-            <a className="facebook" href={facebookLink} target="_blank">See Facebook event &gt; </a>
-          </div>
-          <div className="poster" >
-            <img src={props.cover.source} />
           </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 
 export default EventDetail

@@ -63,8 +63,12 @@
         }
       }
 
-      .description {
+      .detail-content {
         flex-grow: 1;
+        overflow: hidden;
+      }
+
+      .description {
         padding: 16px;
 
         a {
@@ -77,21 +81,28 @@
           display: block;
           margin-top: 16px;
         }
-
       }
 
-      .facebook {
-        margin-bottom: 16px;
-        margin-right: 16px;
+      .facebook, .show-more {
         flex-grow: 0;
         display: block;
-        align-self: end;
         padding: 8px; 
-        text-align: right;
+        align-self: end;
         text-transform: uppercase;
         text-decoration: none;
         font-style: italic;
         color: black;
+        margin-right: 16px;
+        margin-left: 16px;
+      }
+
+      .facebook {
+        text-align: right;
+        margin-bottom: 16px;
+      }
+
+      .show-more {
+        text-align: left;
       }
     }
 
