@@ -16,11 +16,25 @@
     text-transform: uppercase;
     text-decoration: none;
     color: black;
+    letter-spacing: 0.15em;
   }
 
   .meta {
+    position: relative;
+    bottom: -4px;
+
     display: flex;
     flex-direction: column;
-    padding-left: 64px
+    padding-left: 32px;
+
+    ul:first-child {
+      display: block;
+      flex-grow: 1;
+      padding-bottom: 6px;
+    }
+
+    ul:last-child {
+      flex-grow: 0;
+    }
   }
 }
