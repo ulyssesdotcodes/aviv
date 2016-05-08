@@ -14,7 +14,7 @@ const About = (props) => {
       </div>
 
       <ul className="people">
-        <li> Founders: Olivia Russin, Stuart Sliomon, Zack Wheeler </li>
+        <li> Founders: Olivia Russin, Stuart Solomon, Zack Wheeler </li>
         <li> Inhouse Booker: Tyler Kane of Ipsum </li>
         <li> Head of Sound: Jon Jurrow </li>
         <li> Tech Manager: Ulysses Popple </li>
