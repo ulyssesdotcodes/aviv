@@ -56,7 +56,6 @@
     "react": "^0.14.6",
     "react-autolink": "^0.2.1",
     "react-dom": "^0.14.6",
-    "react-infinite": "^0.9.1",
     "react-motion": "^0.4.2",
     "react-redux": "^4.4.1",
     "react-router": "^2.1.1",
