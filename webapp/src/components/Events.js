@@ -53,7 +53,8 @@ const Events = class extends Component {
         Scroll.animateScroll.scrollTo(e.target.offsetTop - offset, { duration: 250 });
         selectEventP(event.id);
       }
-      let eventProps = _.extend(event, { time: this.props.time });
+
+      let eventProps = _.extend(event, { time: this.props.time, dispatch: this.props.dispatch });
       if(event.id == this.props.selected) {
         let height = this._detail ? this._detail.querySelector(".event-summary").clientHeight : 0;
         return (

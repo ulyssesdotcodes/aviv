@@ -4,6 +4,7 @@ import ReactAutolink from 'react-autolink'
 import ReactDOM from 'react-dom'
 import _ from 'lodash'
 
+import { selectEvent } from '../actions'
 import EventDate from './EventDate'
 import EventDescription from './EventDescription'
 import EventSummary from './EventSummary'
@@ -39,9 +40,11 @@ const EventDetail = class extends Component {
       expandDescription: this.expandDescription.bind(this)
     });
 
+    const deselect = (e) => this.props.dispatch(selectEvent(this.props.time, ""))
+
     return (
         <div className="event-detail">
-          <EventSummary { ...this.props }/>
+          <EventSummary { ...this.props } onClick={ deselect }/>
           <div className="details">
             <EventDescription { ...descriptionProps } >
               <div className="description" ref="description">
