@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
-    "watch": "webpack -w"
+    "watch": "webpack -w",
+    "server": "http-server"
   },
   "repository": {
     "type": "git",

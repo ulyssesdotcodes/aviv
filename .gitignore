@@ -24,4 +24,5 @@ webapp/dist
 webapp/bundle.js
 config/keys.yml
 
+node_modules/
 
