@@ -17,7 +17,6 @@ class AvivApp extends Component {
     return (
       <div>
         <Header title="Aviv" address="496 Morgan Ave" motto="All ages forever" email="avivbrooklyn@gmail.com" />
-        <MediaQuery 
         <div className="content">
           {this.props.children}
         </div>

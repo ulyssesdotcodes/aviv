@@ -5,6 +5,8 @@
   margin: 0 auto 0 auto;
   align-items: center;
 
+  @include respond-to(phones) { flex-direction: column; }
+
   margin-bottom: 32px;
   margin-top: 32px;
 
@@ -17,6 +19,8 @@
     text-decoration: none;
     color: black;
     letter-spacing: 0.15em;
+
+    @include respond-to(phones) { font-size: 8em }
   }
 
   .meta {
@@ -36,5 +40,11 @@
     ul:last-child {
       flex-grow: 0;
     }
+  }
+}
+
+.small {
+  .header {
+    flex-direction: column;
   }
 }

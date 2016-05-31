@@ -16,7 +16,8 @@
     font-size: 0.75em;
     text-align: left;
     padding: 12px;
-    width: 150px;
+    width: 30%;
+    max-width: 150;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
@@ -43,11 +44,19 @@
     flex-direction: row;
     font-size: 0.8em;
 
+    @include respond-to(phones) { flex-direction: column-reverse; }
+
     .info {
       display: flex;
       flex-direction: column;
       width: 32%;
       max-width: 300px;
+
+      @include respond-to(phones) {
+        flex-direction: column-reverse;
+        width: 100%;
+        max-width: none;
+      }
 
       .purchase {
         font-size: 1.3em;
@@ -113,6 +122,8 @@
       position: relative;
       width: 69%;
       height: auto;
+
+      @include respond-to(phones) { width: 100%; }
 
       img {
         width: 100%;

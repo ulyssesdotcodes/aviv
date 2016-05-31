@@ -1,5 +1,5 @@
-@import 'components/all';
 @import 'utils/all';
+@import 'components/all';
 
 a {
   color: black;
@@ -10,4 +10,5 @@ a {
 
 body {
   font-size: 16px;
+  @include respond-to(phones) { font-size: 12px; }
 }

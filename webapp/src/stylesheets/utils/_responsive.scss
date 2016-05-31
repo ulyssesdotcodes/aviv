@@ -1,0 +1,11 @@
+$break-small: 480px;
+$break-large: 1024px;
+
+@mixin respond-to($media) {
+  @if $media == phones {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $break-small) { @content; }
+  }
+}

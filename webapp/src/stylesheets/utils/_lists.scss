@@ -22,11 +22,11 @@ ul.slash-list {
     }
   }
 
-  li:before {
-    content: " / ";
+  li:last-child:after {
+    content: none;
   }
 
-  li:first-child:before {
-    content: none;
+  li:after {
+    content: " / ";
   }
 }
