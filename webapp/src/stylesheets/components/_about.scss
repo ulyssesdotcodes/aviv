@@ -6,6 +6,11 @@
     margin-right: 184px;
   }
 
+  @include media(medium-screens) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
   @include media(phones) {
     margin-left: 16px;
     margin-right: 16px;
