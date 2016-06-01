@@ -53,9 +53,9 @@
       max-width: 300px;
 
       @include respond-to(phones) {
-        flex-direction: column-reverse;
         width: 100%;
         max-width: none;
+        margin-top: 8px;
       }
 
       .purchase {
