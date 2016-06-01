@@ -1,12 +1,12 @@
 .about {
   position: relative;
 
-  @include respond-to(wide-screens) {
+  @include media(wide-screens) {
     margin-left: 184px;
     margin-right: 184px;
   }
 
-  @include respond-to(phones) {
+  @include media(phones) {
     margin-left: 16px;
     margin-right: 16px;
   }

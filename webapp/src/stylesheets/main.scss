@@ -9,6 +9,7 @@ a {
 }
 
 body {
-  font-size: 16px;
-  @include respond-to(phones) { font-size: 12px; }
+  @include media(phones) { font-size: 12px; }
+  @include media(medium-screens) { font-size: 14px; }
+  @include media(wide-screens) { font-size: 16px; }
 }

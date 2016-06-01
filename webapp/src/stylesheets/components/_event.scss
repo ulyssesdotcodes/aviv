@@ -44,7 +44,7 @@
     flex-direction: row;
     font-size: 0.8em;
 
-    @include respond-to(phones) { flex-direction: column-reverse; }
+    @include media(phones) { flex-direction: column-reverse; }
 
     .info {
       display: flex;
@@ -52,7 +52,7 @@
       width: 32%;
       max-width: 300px;
 
-      @include respond-to(phones) {
+      @include media(phones) {
         width: 100%;
         max-width: none;
         margin-top: 8px;
@@ -123,7 +123,7 @@
       width: 69%;
       height: auto;
 
-      @include respond-to(phones) { width: 100%; }
+      @include media(phones) { width: 100%; }
 
       img {
         width: 100%;

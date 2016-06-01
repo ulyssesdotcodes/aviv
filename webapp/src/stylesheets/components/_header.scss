@@ -5,7 +5,7 @@
   margin: 0 auto 0 auto;
   align-items: center;
 
-  @include respond-to(phones) { flex-direction: column; }
+  @include media(phones) { flex-direction: column; }
 
   margin-bottom: 32px;
   margin-top: 32px;
@@ -13,14 +13,26 @@
   .title {
     display: block;
     font-family: $sirin;
-    font-size: 3em;
-    margin-left: 32px;
     text-transform: uppercase;
     text-decoration: none;
     color: black;
     letter-spacing: 0.15em;
 
-    @include respond-to(phones) { font-size: 8em }
+    @include media(phones) {
+      font-size: 8em;
+      text-align: center;
+    }
+
+    @include media(medium-screens) {
+      margin-left: 16px;
+      margin-right: 16px;
+      font-size: 3em;
+    }
+
+    @include media(wide-screens) {
+      margin-left: 32px;
+      font-size: 3em;
+    }
   }
 
   .meta {
@@ -29,7 +41,12 @@
 
     display: flex;
     flex-direction: column;
-    padding-left: 32px;
+
+    @include media(wide-screens) { padding-left: 32px; }
+
+    ul {
+      @include media(phones) { text-align: center; }
+    }
 
     ul:first-child {
       display: block;
