@@ -7,8 +7,6 @@ module Foundation where
 import Yesod.Core
 import Yesod.Static
 
-staticFiles "static"
-
 data App = App
 
 mkYesodData "App" $(parseRoutesFile "routes")
