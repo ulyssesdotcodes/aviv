@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 
 export const INVALIDATE_EVENTS = 'INVALIDATE_EVENTS';
 
-var server = "http://venues.upopple.com/"
+var server = "https://venues.upopple.com/"
 
 export function invalidateEvents(time) {
   return {
