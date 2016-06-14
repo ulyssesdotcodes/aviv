@@ -58,7 +58,7 @@ instance FromJSON EventsResponse
 instance ToJSON EventsResponse
 
 appId = "212022015831331"
-facebookUrl = "https://graph.facebook.com/"
+facebookUrl = "https://graph.facebook.com/v2.6/"
 
 eventFieldsQuery = ("fields", "attending_count,description,cover,name,ticket_uri,start_time")
 limitQuery = ("limit", "25")
@@ -93,10 +93,14 @@ parseRequest params =
 generateFbRequest :: String -> String -> UTCTime -> EventsRequest -> String
 generateFbRequest venue atStr now (EventsRequest past cursor) =
   fbRequestUrl venue atStr
-    ([(timeframe past, formatTime defaultTimeLocale "%FT%T%Q" now)] ++ (page cursor))
+    ([(timeframe past, formatTime defaultTimeLocale "%FT%T%Q" $ relativeNow past), ("limit", limit past)] ++ (page cursor))
   where
     timeframe True = "until"
     timeframe False = "since"
+    limit True = "25"
+    limit False = "100"
+    relativeNow True = UTCTime (utctDay now) (utctDayTime now - secondsToDiffTime (5 * 60 * 60)) -- We lose 3 hours to facebook graph API cause it's awesome
+    relativeNow False = UTCTime (utctDay now) (utctDayTime now - secondsToDiffTime (8 * 60 * 60))
     page Nothing = []
     page (Just cursor) = [("after", cursor)]
 
@@ -112,7 +116,7 @@ boolToString False = "false"
 
 fbRequestUrl :: String -> String -> [(String, String)] -> String
 fbRequestUrl venue atValue extra = facebookUrl ++ venue ++ "/events?" ++
-  queryParams ([eventFieldsQuery, (accessTokenParam, atValue), limitQuery] ++ extra)
+  queryParams ([eventFieldsQuery, (accessTokenParam, atValue)] ++ extra)
 
 queryParams :: [(String, String)] -> String
 queryParams = intercalate "&" . map (\(k, v) -> k ++ "=" ++ v)
